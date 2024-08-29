@@ -29,7 +29,8 @@ type
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
     function Value(AValue: Double; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
-      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
     function Icon(AIcon: EnumWebCardIcons; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
   End;
@@ -83,12 +84,14 @@ end;
 
 function TModelEntitiesCardData.Value(AValue: Double; AColorFont: EnumWebCardColors;
   AColorBackground: EnumWebCardColors; ABarVisible: Boolean;
-  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors): IWebCardModelEntitiesCardData;
+  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors;
+  AIsPercent: Boolean): IWebCardModelEntitiesCardData;
 begin
   result := Self;
 
   FCardValue.SetValue(AValue)
     .ColorFont(AColorFont)
+    .IsPercent(AIsPercent)
     .BarVisible(ABarVisible)
     .BarColorFont(ABarColorFont)
     .ColorBackground(AColorBackground)

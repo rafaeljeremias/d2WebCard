@@ -12,7 +12,7 @@ interface
 
 type
   EnumWebCardIcons = (wciNone, wciBitcoin, wciMoney, wciShoppingCart, wciSell,
-    wciMonitoring, wciFinance, wciTarget);
+    wciMonitoring, wciFinance, wciTarget, wciNorthEast, wciPriceCheck);
   EnumWebCardColors = (wccNone, wccSuccess, wccSecondary, wccWarning, wccPrimary,
     wccDanger, wccInfo, wccDark);
   EnumWebCardToolTipPosition = (ttpNone, ttpTop, ttpBottom, ttpCenter, ttpRight, ttpLeft);
@@ -31,6 +31,7 @@ type
   IWebCardModelEntitiesCardDataDouble = Interface
     ['{16C4E007-6631-4C94-802D-5391E49C1C03}']
     function AsFloat: Double; overload;
+    function IsPercent: Boolean; overload;
     function BarVisible: Boolean; overload;
     function ColorFont: EnumWebCardColors; overload;
     function BarColorFont: EnumWebCardColors; overload;
@@ -38,6 +39,7 @@ type
     function BarColorBackground: EnumWebCardColors; overload;
 
     function SetValue(AValue: Double): IWebCardModelEntitiesCardDataDouble; overload;
+    function IsPercent(AValue: Boolean): IWebCardModelEntitiesCardDataDouble; overload;
     function BarVisible(AValue: Boolean): IWebCardModelEntitiesCardDataDouble; overload;
     function ColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
     function BarColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
@@ -68,7 +70,8 @@ type
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
     function Value(AValue: Double; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
-      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
     function Icon(AIcon: EnumWebCardIcons; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
   End;

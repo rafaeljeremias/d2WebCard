@@ -87,7 +87,8 @@ begin
                     FCard.Text.AsString,
                     EnumWebCardColorsToStr(FCard.Value.ColorFont),
                     EnumWebCardColorsToBackgroudStr(FCard.Value.ColorBackground),
-                    FormatFloat('#,##0.00', FCard.Value.AsFloat) + ifThen(FCard.Value.BarVisible, '%', ''),
+                    FormatFloat('#,##0.00', FCard.Value.AsFloat) +
+                      ifThen(FCard.Value.BarVisible or FCard.Value.IsPercent, '%', ''),
                     LHtmlBar]);
 end;
 

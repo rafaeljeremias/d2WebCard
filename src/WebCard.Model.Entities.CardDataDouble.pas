@@ -9,6 +9,7 @@ type
   TModelEntitiesCardDataDouble = class(TInterfacedObject, IWebCardModelEntitiesCardDataDouble)
   strict private
     FValue: Double;
+    FIsPercent: Boolean;
     FBarVisible: Boolean;
     FColorFont: EnumWebCardColors;
     FBarColorFont: EnumWebCardColors;
@@ -17,12 +18,15 @@ type
   public
     constructor Create(AValue: Double = 0; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
-      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone);
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False);
     class function New(AValue: Double = 0; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
-      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardDataDouble;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False): IWebCardModelEntitiesCardDataDouble;
 
     function AsFloat: Double; overload;
+    function IsPercent: Boolean; overload;
     function BarVisible: Boolean; overload;
     function ColorFont: EnumWebCardColors; overload;
     function BarColorFont: EnumWebCardColors; overload;
@@ -30,6 +34,7 @@ type
     function BarColorBackground: EnumWebCardColors; overload;
 
     function SetValue(AValue: Double): IWebCardModelEntitiesCardDataDouble; overload;
+    function IsPercent(AValue: Boolean): IWebCardModelEntitiesCardDataDouble; overload;
     function BarVisible(AValue: Boolean): IWebCardModelEntitiesCardDataDouble; overload;
     function ColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
     function BarColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
@@ -69,11 +74,13 @@ end;
 
 constructor TModelEntitiesCardDataDouble.Create(AValue: Double; AColorFont,
   AColorBackground: EnumWebCardColors; ABarVisible: Boolean;
-  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors);
+  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors;
+  AIsPercent: Boolean);
 begin
   inherited Create;
 
   FValue := AValue;
+  FIsPercent := AIsPercent;
   FColorFont := AColorFont;
   FBarVisible := ABarVisible;
   FBarColorFont := ABarColorFont;
@@ -81,12 +88,26 @@ begin
   FBarColorBackground := ABarColorBackground;
 end;
 
+function TModelEntitiesCardDataDouble.IsPercent(
+  AValue: Boolean): IWebCardModelEntitiesCardDataDouble;
+begin
+  result := Self;
+
+  FIsPercent := AValue;
+end;
+
+function TModelEntitiesCardDataDouble.IsPercent: Boolean;
+begin
+  result := FIsPercent;
+end;
+
 class function TModelEntitiesCardDataDouble.New(AValue: Double; AColorFont,
   AColorBackground: EnumWebCardColors; ABarVisible: Boolean;
-  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble;
+  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors;
+  AIsPercent: Boolean): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self.Create(AValue, AColorFont, AColorBackground, ABarVisible,
-    ABarColorFont, ABarColorBackground);
+    ABarColorFont, ABarColorBackground, AIsPercent);
 end;
 
 function TModelEntitiesCardDataDouble.AsFloat: Double;

@@ -23,6 +23,8 @@ begin
     wciMonitoring: result := 'monitoring';
     wciFinance: result := 'finance';
     wciTarget: result := 'ads_click';
+    wciNorthEast: result := 'north_east';
+    wciPriceCheck: result := 'price_check';
   end;
 end;
 
