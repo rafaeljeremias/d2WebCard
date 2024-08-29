@@ -1,12 +1,21 @@
 unit WebCard.Model.Interfaces;
 
+{
+
+fontes dos icons
+
+https://fonts.google.com/icons?selected=Material+Symbols+Outlined:ads_click:FILL@0;wght@400;GRAD@0;opsz@24&icon.size=24&icon.color=%23e8eaed&icon.platform=android&icon.query=target
+
+}
+
 interface
 
 type
-  EnumWebCardIcons = (wciNone, wciBitcoin, wciMoney, wciShoppingCart,wciSell,
-    wciMonitoring, wciFinance);
+  EnumWebCardIcons = (wciNone, wciBitcoin, wciMoney, wciShoppingCart, wciSell,
+    wciMonitoring, wciFinance, wciTarget);
   EnumWebCardColors = (wccNone, wccSuccess, wccSecondary, wccWarning, wccPrimary,
     wccDanger, wccInfo, wccDark);
+  EnumWebCardToolTipPosition = (ttpNone, ttpTop, ttpBottom, ttpCenter, ttpRight, ttpLeft);
 
   IWebCardModelEntitiesCardDataStr = Interface
     ['{07749743-B394-4142-B741-924742B4E4CE}']
@@ -49,10 +58,12 @@ type
 
   IWebCardModelEntitiesCardData = Interface
     ['{9BA026AE-3AC7-497A-BB12-1AD71768A68C}']
+    function ToolTip: string; overload;
     function Text: IWebCardModelEntitiesCardDataStr; overload;
     function Value: IWebCardModelEntitiesCardDataDouble; overload;
     function Icon: IWebCardModelEntitiesCardDataIcon; overload;
 
+    function ToolTip(AValue: string): IWebCardModelEntitiesCardData; overload;
     function Text(AText: string; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
     function Value(AValue: Double; AColorFont: EnumWebCardColors = wccDark;

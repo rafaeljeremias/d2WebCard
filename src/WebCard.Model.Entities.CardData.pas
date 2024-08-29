@@ -11,6 +11,7 @@ uses
 type
   TModelEntitiesCardData = class(TInterfacedObject, IWebCardModelEntitiesCardData)
   strict private
+    FToolTip: string;
     FCardLabel: IWebCardModelEntitiesCardDataStr;
     FCardIcon: IWebCardModelEntitiesCardDataIcon;
     FCardValue: IWebCardModelEntitiesCardDataDouble;
@@ -18,10 +19,12 @@ type
     constructor Create;
     class function New: IWebCardModelEntitiesCardData;
 
+    function ToolTip: string; overload;
     function Text: IWebCardModelEntitiesCardDataStr; overload;
     function Icon: IWebCardModelEntitiesCardDataIcon; overload;
     function Value: IWebCardModelEntitiesCardDataDouble; overload;
 
+    function ToolTip(AValue: string): IWebCardModelEntitiesCardData; overload;
     function Text(AText: string; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
     function Value(AValue: Double; AColorFont: EnumWebCardColors = wccDark;
@@ -58,6 +61,19 @@ begin
   FCardLabel.SetValue(AText)
     .ColorFont(AColorFont)
     .ColorBackground(AColorBackground);
+end;
+
+function TModelEntitiesCardData.ToolTip(
+  AValue: string): IWebCardModelEntitiesCardData;
+begin
+  result := Self;
+
+  FToolTip := AValue;
+end;
+
+function TModelEntitiesCardData.ToolTip: string;
+begin
+  result := FToolTip;
 end;
 
 function TModelEntitiesCardData.Text: IWebCardModelEntitiesCardDataStr;

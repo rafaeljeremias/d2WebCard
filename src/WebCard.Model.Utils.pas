@@ -22,6 +22,7 @@ begin
     wciSell: result := 'sell';
     wciMonitoring: result := 'monitoring';
     wciFinance: result := 'finance';
+    wciTarget: result := 'ads_click';
   end;
 end;
 
