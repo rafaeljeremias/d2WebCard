@@ -42,13 +42,15 @@ begin
 
   if FCard.Value.BarVisible then
   begin
-    LBarColor := EnumWebCardColorsToStr(FCard.Value.BarColorFont);
+    LBarColor := EnumWebCardColorsToBackgroudStr(FCard.Value.BarColorFont);
     LBarColorBackground := EnumWebCardColorsToBackgroudStr(FCard.Value.BarColorBackground);
 
-    LHtmlBar := Format('<div class="progress-bar %s %s" style="width:%s"></div>',
-                       [LBarColor,
-                        LBarColorBackground,
-                        FormatFloat('#,##0.00', FCard.Value.AsFloat) +'%']);
+    LHtmlBar := Format('<div class="progress p-0 %s" style="height: .5rem"> '+
+                       '  <div class="progress-bar %s" style="width:%s"></div> '+
+                       '</div> ',
+                       [LBarColorBackground,
+                        LBarColor,
+                        AnsiReplaceStr(FormatFloat('#,##0.00', FCard.Value.AsFloat), ',', '.') +'%']);
   end;
 
   result := Format('<div class="card py-0 h-100"> '+
@@ -60,9 +62,7 @@ begin
                    '          <div class="col-9 m-0 row p-0"> '+
                    '             <span class="col-12 text-truncate text-end fw-semibold %s %s">%s</span> '+
                    '             <span class="col-12 text-truncate text-end fs-2 fw-bolder %s %s">%s</span> '+
-                   '             <div class="progress p-0" style="height: .5rem"> '+
                    '               %s '+
-                   '             </div> '+
                    '          </div> '+
                    '      </div> '+
                    '   </div> '+
