@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Model,
-  Model.Interfaces;
+  WebCard.Model,
+  WebCard.Model.Interfaces;
 
 type
   TForm1 = class(TForm)
@@ -28,14 +28,14 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
-  LCardData: IModelEntitiesCardData;
+  LCardData: IWebCardModelEntitiesCardData;
 begin
-  LCardData := TModel.New.Entities
+  LCardData := TWebCardModel.New.Entities
                  .CardData.Text('Valor do dia (R$)')
                    .Icon(wciMoney)
                    .Value(3054, wccDark, wccNone, True, wccWarning, wccDanger);
 
-  Memo1.Lines.Text := TModel.New.Card(LCardData).Generate;
+  Memo1.Lines.Text := TWebCardModel.New.Card(LCardData).Generate;
 end;
 
 end.

@@ -126,15 +126,15 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Model.Interfaces.pas"/>
-        <DCCReference Include="..\Model.Entities.CardData.pas"/>
-        <DCCReference Include="..\Model.Card.pas"/>
-        <DCCReference Include="..\Model.Utils.pas"/>
-        <DCCReference Include="..\Model.pas"/>
-        <DCCReference Include="..\Model.Entities.pas"/>
-        <DCCReference Include="..\Model.Entities.CardDataStr.pas"/>
-        <DCCReference Include="..\Model.Entities.CardDataDouble.pas"/>
-        <DCCReference Include="..\Model.Entities.CardDataIcon.pas"/>
+        <DCCReference Include="..\WebCard.Model.Interfaces.pas"/>
+        <DCCReference Include="..\WebCard.Model.Entities.CardData.pas"/>
+        <DCCReference Include="..\WebCard.Model.Card.pas"/>
+        <DCCReference Include="..\WebCard.Model.Utils.pas"/>
+        <DCCReference Include="..\WebCard.Model.pas"/>
+        <DCCReference Include="..\WebCard.Model.Entities.pas"/>
+        <DCCReference Include="..\WebCard.Model.Entities.CardDataStr.pas"/>
+        <DCCReference Include="..\WebCard.Model.Entities.CardDataDouble.pas"/>
+        <DCCReference Include="..\WebCard.Model.Entities.CardDataIcon.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -1,12 +1,12 @@
-unit Model.Entities.CardDataDouble;
+unit WebCard.Model.Entities.CardDataDouble;
 
 interface
 
 uses
-  Model.Interfaces;
+  WebCard.Model.Interfaces;
 
 type
-  TModelEntitiesCardDataDouble = class(TInterfacedObject, IModelEntitiesCardDataDouble)
+  TModelEntitiesCardDataDouble = class(TInterfacedObject, IWebCardModelEntitiesCardDataDouble)
   strict private
     FValue: Double;
     FBarVisible: Boolean;
@@ -20,7 +20,7 @@ type
       ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone);
     class function New(AValue: Double = 0; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
-      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone): IModelEntitiesCardDataDouble;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardDataDouble;
 
     function AsFloat: Double; overload;
     function BarVisible: Boolean; overload;
@@ -29,12 +29,12 @@ type
     function ColorBackground: EnumWebCardColors; overload;
     function BarColorBackground: EnumWebCardColors; overload;
 
-    function SetValue(AValue: Double): IModelEntitiesCardDataDouble; overload;
-    function BarVisible(AValue: Boolean): IModelEntitiesCardDataDouble; overload;
-    function ColorFont(AValue: EnumWebCardColors): IModelEntitiesCardDataDouble; overload;
-    function BarColorFont(AValue: EnumWebCardColors): IModelEntitiesCardDataDouble; overload;
-    function ColorBackground(AValue: EnumWebCardColors): IModelEntitiesCardDataDouble; overload;
-    function BarColorBackground(AValue: EnumWebCardColors): IModelEntitiesCardDataDouble; overload;
+    function SetValue(AValue: Double): IWebCardModelEntitiesCardDataDouble; overload;
+    function BarVisible(AValue: Boolean): IWebCardModelEntitiesCardDataDouble; overload;
+    function ColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
+    function BarColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
+    function ColorBackground(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
+    function BarColorBackground(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble; overload;
   End;
 
 implementation
@@ -42,7 +42,7 @@ implementation
 { TModelEntitiesCardDataDouble }
 
 function TModelEntitiesCardDataDouble.ColorBackground(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataDouble;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self;
 
@@ -55,7 +55,7 @@ begin
 end;
 
 function TModelEntitiesCardDataDouble.ColorFont(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataDouble;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self;
 
@@ -83,7 +83,7 @@ end;
 
 class function TModelEntitiesCardDataDouble.New(AValue: Double; AColorFont,
   AColorBackground: EnumWebCardColors; ABarVisible: Boolean;
-  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors): IModelEntitiesCardDataDouble;
+  ABarColorFont: EnumWebCardColors; ABarColorBackground: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self.Create(AValue, AColorFont, AColorBackground, ABarVisible,
     ABarColorFont, ABarColorBackground);
@@ -95,7 +95,7 @@ begin
 end;
 
 function TModelEntitiesCardDataDouble.SetValue(
-  AValue: Double): IModelEntitiesCardDataDouble;
+  AValue: Double): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self;
 
@@ -103,7 +103,7 @@ begin
 end;
 
 function TModelEntitiesCardDataDouble.BarColorBackground(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataDouble;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self;
 
@@ -116,7 +116,7 @@ begin
 end;
 
 function TModelEntitiesCardDataDouble.BarColorFont(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataDouble;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self;
 
@@ -129,7 +129,7 @@ begin
 end;
 
 function TModelEntitiesCardDataDouble.BarVisible(
-  AValue: Boolean): IModelEntitiesCardDataDouble;
+  AValue: Boolean): IWebCardModelEntitiesCardDataDouble;
 begin
   result := Self;
 

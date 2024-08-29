@@ -1,9 +1,9 @@
-unit Model.Utils;
+unit WebCard.Model.Utils;
 
 interface
 
 uses
-  Model.Interfaces;
+  WebCard.Model.Interfaces;
 
 function EnumWebCardIconToStr(AValue: EnumWebCardIcons): string;
 function EnumWebCardColorsToStr(AValue: EnumWebCardColors): string;

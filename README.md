@@ -10,16 +10,16 @@ boss install https://github.com/rafaeljeremias/d2WebCard.git
 # Declaração
 Para utilizar o d2webCard você deve adicionar as uses:
 ```pascal
-  Model,
-  Model.Interfaces;
+  WebCard.Model,
+  WebCard.Model.Interfaces;
 ```
 
 # Como usar
 ```pascal  
-  var LCardData := TModel.New.Entities
+  var LCardData := TWebCardModel.New.Entities
                  .CardData.Text('Valor do dia (R$)')
                    .Icon(wciMoney)
                    .Value(3054, wccDark, wccNone, True, wccWarning, wccDanger);
 
-  TModel.New.Card(LCardData).Generate;
+  TWebCardModel.New.Card(LCardData).Generate;
 ```

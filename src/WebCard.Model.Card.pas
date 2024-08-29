@@ -1,21 +1,21 @@
-unit Model.Card;
+unit WebCard.Model.Card;
 
 interface
 
 uses
-  Model.Utils,
   System.Classes,
   System.StrUtils,
   System.SysUtils,
-  Model.Interfaces;
+  WebCard.Model.Utils,
+  WebCard.Model.Interfaces;
 
 type
-  TModelCard = class(TInterfacedObject, IModelCard)
+  TModelCard = class(TInterfacedObject, IWebCardModelCard)
   strict private
-    FCard: IModelEntitiesCardData;
+    FCard: IWebCardModelEntitiesCardData;
   public
-    constructor Create(AValue: IModelEntitiesCardData);
-    class function New(AValue: IModelEntitiesCardData): IModelCard;
+    constructor Create(AValue: IWebCardModelEntitiesCardData);
+    class function New(AValue: IWebCardModelEntitiesCardData): IWebCardModelCard;
 
     function Generate: string;
   End;
@@ -24,7 +24,7 @@ implementation
 
 { TModelCard }
 
-constructor TModelCard.Create(AValue: IModelEntitiesCardData);
+constructor TModelCard.Create(AValue: IWebCardModelEntitiesCardData);
 begin
   inherited Create;
 
@@ -79,7 +79,7 @@ begin
                     LHtmlBar]);
 end;
 
-class function TModelCard.New(AValue: IModelEntitiesCardData): IModelCard;
+class function TModelCard.New(AValue: IWebCardModelEntitiesCardData): IWebCardModelCard;
 begin
   result := Self.Create(AValue);
 end;

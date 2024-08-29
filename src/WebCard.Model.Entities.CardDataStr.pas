@@ -1,12 +1,12 @@
-unit Model.Entities.CardDataStr;
+unit WebCard.Model.Entities.CardDataStr;
 
 interface
 
 uses
-  Model.Interfaces;
+  WebCard.Model.Interfaces;
 
 type
-  TModelEntitiesCardDataStr = class(TInterfacedObject, IModelEntitiesCardDataStr)
+  TModelEntitiesCardDataStr = class(TInterfacedObject, IWebCardModelEntitiesCardDataStr)
   strict private
     FText: string;
     FColorFont: EnumWebCardColors;
@@ -15,15 +15,15 @@ type
     constructor Create(AText: string = ''; AColorFont: EnumWebCardColors = wccDark;
       AColorBackGround: EnumWebCardColors = wccNone);
     class function New(AText: string = ''; AColorFont: EnumWebCardColors = wccDark;
-      AColorBackGround: EnumWebCardColors = wccNone): IModelEntitiesCardDataStr;
+      AColorBackGround: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardDataStr;
 
     function AsString: string; overload;
     function ColorFont: EnumWebCardColors; overload;
     function ColorBackground: EnumWebCardColors; overload;
 
-    function SetValue(AValue: string): IModelEntitiesCardDataStr; overload;
-    function ColorFont(AValue: EnumWebCardColors): IModelEntitiesCardDataStr; overload;
-    function ColorBackground(AValue: EnumWebCardColors): IModelEntitiesCardDataStr; overload;
+    function SetValue(AValue: string): IWebCardModelEntitiesCardDataStr; overload;
+    function ColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataStr; overload;
+    function ColorBackground(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataStr; overload;
   End;
 
 implementation
@@ -31,7 +31,7 @@ implementation
 { TModelEntitiesCardDataStr }
 
 function TModelEntitiesCardDataStr.ColorBackground(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataStr;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataStr;
 begin
   result := Self;
 
@@ -44,7 +44,7 @@ begin
 end;
 
 function TModelEntitiesCardDataStr.ColorFont(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataStr;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataStr;
 begin
   result := Self;
 
@@ -67,7 +67,7 @@ begin
 end;
 
 class function TModelEntitiesCardDataStr.New(AText: string; AColorFont,
-  AColorBackGround: EnumWebCardColors): IModelEntitiesCardDataStr;
+  AColorBackGround: EnumWebCardColors): IWebCardModelEntitiesCardDataStr;
 begin
   result := Self.Create(AText, AColorFont, AColorBackGround);
 end;
@@ -78,7 +78,7 @@ begin
 end;
 
 function TModelEntitiesCardDataStr.SetValue(
-  AValue: string): IModelEntitiesCardDataStr;
+  AValue: string): IWebCardModelEntitiesCardDataStr;
 begin
   result := Self;
 

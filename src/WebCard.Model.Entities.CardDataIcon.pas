@@ -1,12 +1,12 @@
-unit Model.Entities.CardDataIcon;
+unit WebCard.Model.Entities.CardDataIcon;
 
 interface
 
 uses
-  Model.Interfaces;
+  WebCard.Model.Interfaces;
 
 type
-  TModelEntitiesCardDataIcon = class(TInterfacedObject, IModelEntitiesCardDataIcon)
+  TModelEntitiesCardDataIcon = class(TInterfacedObject, IWebCardModelEntitiesCardDataIcon)
   strict private
     FIcon: EnumWebCardIcons;
     FColorFont: EnumWebCardColors;
@@ -15,15 +15,15 @@ type
     constructor Create(AIcon: EnumWebCardIcons = wciNone; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone);
     class function New(AIcon: EnumWebCardIcons = wciNone; AColorFont: EnumWebCardColors = wccDark;
-      AColorBackground: EnumWebCardColors = wccNone): IModelEntitiesCardDataIcon;
+      AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardDataIcon;
 
     function Name: EnumWebCardIcons; overload;
     function ColorFont: EnumWebCardColors; overload;
     function ColorBackground: EnumWebCardColors; overload;
 
-    function SetValue(AValue: EnumWebCardIcons): IModelEntitiesCardDataIcon; overload;
-    function ColorFont(AValue: EnumWebCardColors): IModelEntitiesCardDataIcon; overload;
-    function ColorBackground(AValue: EnumWebCardColors): IModelEntitiesCardDataIcon; overload;
+    function SetValue(AValue: EnumWebCardIcons): IWebCardModelEntitiesCardDataIcon; overload;
+    function ColorFont(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataIcon; overload;
+    function ColorBackground(AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataIcon; overload;
   End;
 
 implementation
@@ -31,7 +31,7 @@ implementation
 { TModelEntitiesCardDataIcon }
 
 function TModelEntitiesCardDataIcon.ColorBackground(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataIcon;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataIcon;
 begin
   result := Self;
 
@@ -44,7 +44,7 @@ begin
 end;
 
 function TModelEntitiesCardDataIcon.ColorFont(
-  AValue: EnumWebCardColors): IModelEntitiesCardDataIcon;
+  AValue: EnumWebCardColors): IWebCardModelEntitiesCardDataIcon;
 begin
   result := Self;
 
@@ -67,7 +67,7 @@ begin
 end;
 
 function TModelEntitiesCardDataIcon.SetValue(
-  AValue: EnumWebCardIcons): IModelEntitiesCardDataIcon;
+  AValue: EnumWebCardIcons): IWebCardModelEntitiesCardDataIcon;
 begin
   result := Self;
 
@@ -80,7 +80,7 @@ begin
 end;
 
 class function TModelEntitiesCardDataIcon.New(AIcon: EnumWebCardIcons;
-  AColorFont: EnumWebCardColors; AColorBackground: EnumWebCardColors): IModelEntitiesCardDataIcon;
+  AColorFont: EnumWebCardColors; AColorBackground: EnumWebCardColors): IWebCardModelEntitiesCardDataIcon;
 begin
   result := Self.Create(AIcon, AColorFont, AColorBackground);
 end;
