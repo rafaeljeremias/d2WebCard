@@ -62,7 +62,7 @@ begin
   if FCard.ToolTip <> '' then
     LToolTip := Format('data-bs-toggle="tooltip" data-bs-placement="top" title="%s"', [FCard.ToolTip]);
 
-  result := Format('<div class="p-1 col-3" %s> '+
+  result := Format('<div class="p-1 col-sm-3 col-12" %s> '+
                    '  <div class="card py-0 h-100"> '+
                    '    <div class="card-body row p-2"> '+
                    '      <div class="row m-0 d-flex justify-content-between"> '+
