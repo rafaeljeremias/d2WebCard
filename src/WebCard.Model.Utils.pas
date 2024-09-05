@@ -5,6 +5,7 @@ interface
 uses
   WebCard.Model.Interfaces;
 
+function EnumWebCardIconsTypeToFileName(AValue: EnumWebCardIcons): string;
 function EnumWebCardIconToStr(AValue: EnumWebCardIcons): string;
 function EnumWebCardColorsToStr(AValue: EnumWebCardColors): string;
 function EnumWebCardColorsToBackgroudStr(AValue: EnumWebCardColors): string;
@@ -25,6 +26,7 @@ begin
     wciTarget: result := 'ads_click';
     wciNorthEast: result := 'north_east';
     wciPriceCheck: result := 'price_check';
+    wciStoreFront: result := 'storefront';
   end;
 end;
 
@@ -55,6 +57,24 @@ begin
     wccDanger: result := 'bg-danger';
     wccInfo: result := 'bg-info';
     wccDark: result := 'bg-dark';
+  end;
+end;
+
+function EnumWebCardIconsTypeToFileName(AValue: EnumWebCardIcons): string;
+begin
+  result := '';
+
+  case AValue of
+    wciBitcoin: result := 'currency_bitcoin.png';
+    wciMoney: result := 'attach_money.png';
+    wciShoppingCart: result := 'shopping_cart.png';
+    wciSell: result := 'sell.png';
+    wciMonitoring: result := 'monitoring.png';
+    wciFinance: result := 'finance.png';
+    wciTarget: result := 'ads_click.png';
+    wciNorthEast: result := 'north_east.png';
+    wciPriceCheck: result := 'price_check.png';
+    wciStoreFront: result := 'storefront.png';
   end;
 end;
 

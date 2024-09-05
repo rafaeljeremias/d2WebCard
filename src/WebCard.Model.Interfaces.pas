@@ -11,8 +11,10 @@ https://fonts.google.com/icons?selected=Material+Symbols+Outlined:ads_click:FILL
 interface
 
 type
+  EnumWebCardIconsType = (wiNone, wiGoogleFonts, wiImage);
   EnumWebCardIcons = (wciNone, wciBitcoin, wciMoney, wciShoppingCart, wciSell,
-    wciMonitoring, wciFinance, wciTarget, wciNorthEast, wciPriceCheck);
+    wciMonitoring, wciFinance, wciTarget, wciNorthEast, wciPriceCheck,
+    wciStoreFront);
   EnumWebCardColors = (wccNone, wccSuccess, wccSecondary, wccWarning, wccPrimary,
     wccDanger, wccInfo, wccDark);
   EnumWebCardToolTipPosition = (ttpNone, ttpTop, ttpBottom, ttpCenter, ttpRight, ttpLeft);
@@ -94,7 +96,8 @@ type
 
   IWebCardModel = Interface
     ['{3384B153-FBC0-4347-A18A-94FC301C06ED}']
-    function Card(AValue: IWebCardModelEntitiesCardData): IWebCardModelCard;
+    function Card(AValue: IWebCardModelEntitiesCardData;
+      AIconsType: EnumWebCardIconsType = wiGoogleFonts): IWebCardModelCard;
     function Entities: IWebCardModelEntities;
   End;
 

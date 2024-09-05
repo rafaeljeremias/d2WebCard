@@ -12,10 +12,13 @@ uses
 type
   TModelCard = class(TInterfacedObject, IWebCardModelCard)
   strict private
+    FIconsType: EnumWebCardIconsType;
     FCard: IWebCardModelEntitiesCardData;
   public
-    constructor Create(AValue: IWebCardModelEntitiesCardData);
-    class function New(AValue: IWebCardModelEntitiesCardData): IWebCardModelCard;
+    constructor Create(AValue: IWebCardModelEntitiesCardData;
+      AIconsType: EnumWebCardIconsType = wiGoogleFonts);
+    class function New(AValue: IWebCardModelEntitiesCardData;
+      AIconsType: EnumWebCardIconsType = wiGoogleFonts): IWebCardModelCard;
 
     function Generate: string;
   End;
@@ -24,21 +27,35 @@ implementation
 
 { TModelCard }
 
-constructor TModelCard.Create(AValue: IWebCardModelEntitiesCardData);
+constructor TModelCard.Create(AValue: IWebCardModelEntitiesCardData;
+  AIconsType: EnumWebCardIconsType = wiGoogleFonts);
 begin
   inherited Create;
 
   FCard := AValue;
+  FIconsType := AIconsType;
 end;
 
 function TModelCard.Generate: string;
 var
   LHtmlBar: string;
   LBarColor: string;
+  LIconsTypeStr: string;
   LBarColorBackground: string;
 begin
   var LIcon := EnumWebCardIconToStr(FCard.Icon.Name);
   LHtmlBar := '';
+
+  LIconsTypeStr := Format('<span class="material-symbols-outlined p-0 fw-bolder %s %s" style="font-size: 40pt;">%s</span>',
+                          [EnumWebCardColorsToStr(FCard.Icon.ColorFont),
+                           EnumWebCardColorsToBackgroudStr(FCard.Icon.ColorBackground),
+                           LIcon]);
+
+  if FIconsType = wiImage then
+  begin
+    LIconsTypeStr := Format('<img src="assets\img\icons\%s" style="height: 45pt;"/>',
+                            [EnumWebCardIconsTypeToFileName(FCard.Icon.Name)]);
+  end;
 
   if FCard.Value.BarVisible then
   begin
@@ -67,7 +84,7 @@ begin
                    '    <div class="card-body row p-2"> '+
                    '      <div class="row m-0 d-flex justify-content-between"> '+
                    '        <div class="col-2 d-flex align-items-center justify-content-center"> '+
-                   '          <span class="material-symbols-outlined p-0 fw-bolder %s %s" style="font-size: 40pt;">%s</span> '+
+                   '          %s '+
                    '        </div> '+
                    '        <div class="col-9 m-0 row p-0"> '+
                    '          <span class="col-12 text-truncate text-end fw-semibold %s %s">%s</span> '+
@@ -79,9 +96,7 @@ begin
                    '  </div> '+
                    '</div>',
                    [LToolTip,
-                    EnumWebCardColorsToStr(FCard.Icon.ColorFont),
-                    EnumWebCardColorsToBackgroudStr(FCard.Icon.ColorBackground),
-                    LIcon,
+                    LIconsTypeStr,
                     EnumWebCardColorsToStr(FCard.Text.ColorFont),
                     EnumWebCardColorsToBackgroudStr(FCard.Text.ColorBackground),
                     FCard.Text.AsString,
@@ -92,9 +107,10 @@ begin
                     LHtmlBar]);
 end;
 
-class function TModelCard.New(AValue: IWebCardModelEntitiesCardData): IWebCardModelCard;
+class function TModelCard.New(AValue: IWebCardModelEntitiesCardData;
+  AIconsType: EnumWebCardIconsType = wiGoogleFonts): IWebCardModelCard;
 begin
-  result := Self.Create(AValue);
+  result := Self.Create(AValue, AIconsType);
 end;
 
 end.
