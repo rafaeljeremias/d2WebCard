@@ -27,6 +27,9 @@ begin
     wciNorthEast: result := 'north_east';
     wciPriceCheck: result := 'price_check';
     wciStoreFront: result := 'storefront';
+    wciInventory_2: result := 'inventory_2';
+    wciCategory: result := 'category';
+    wciFunctions: result := 'functions';
   end;
 end;
 
@@ -75,6 +78,9 @@ begin
     wciNorthEast: result := 'north_east.png';
     wciPriceCheck: result := 'price_check.png';
     wciStoreFront: result := 'storefront.png';
+    wciInventory_2: result := 'inventory_2.png';
+    wciCategory: result := 'category.png';
+    wciFunctions: result := 'wciFunctions.png';
   end;
 end;
 
