@@ -30,6 +30,7 @@ begin
     wciInventory_2: result := 'inventory_2';
     wciCategory: result := 'category';
     wciFunctions: result := 'functions';
+    wciEqualizer: result := 'equalizer';
   end;
 end;
 
@@ -80,7 +81,8 @@ begin
     wciStoreFront: result := 'storefront.png';
     wciInventory_2: result := 'inventory_2.png';
     wciCategory: result := 'category.png';
-    wciFunctions: result := 'wciFunctions.png';
+    wciFunctions: result := 'functions.png';
+    wciEqualizer: result := 'equalizer.png';
   end;
 end;
 

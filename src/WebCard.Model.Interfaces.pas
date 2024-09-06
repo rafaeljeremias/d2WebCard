@@ -14,7 +14,7 @@ type
   EnumWebCardIconsType = (wiNone, wiGoogleFonts, wiImage);
   EnumWebCardIcons = (wciNone, wciBitcoin, wciMoney, wciShoppingCart, wciSell,
     wciMonitoring, wciFinance, wciTarget, wciNorthEast, wciPriceCheck,
-    wciStoreFront, wciInventory_2, wciCategory, wciFunctions);
+    wciStoreFront, wciInventory_2, wciCategory, wciFunctions, wciEqualizer);
   EnumWebCardColors = (wccNone, wccSuccess, wccSecondary, wccWarning, wccPrimary,
     wccDanger, wccInfo, wccDark);
   EnumWebCardToolTipPosition = (ttpNone, ttpTop, ttpBottom, ttpCenter, ttpRight, ttpLeft);
