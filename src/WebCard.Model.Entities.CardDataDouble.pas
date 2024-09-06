@@ -25,6 +25,7 @@ type
       ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
       AIsPercent: Boolean = False): IWebCardModelEntitiesCardDataDouble;
 
+    function AsInteger: Integer;
     function AsFloat: Double; overload;
     function IsPercent: Boolean; overload;
     function BarVisible: Boolean; overload;
@@ -121,6 +122,11 @@ begin
   result := Self;
 
   FValue := AValue;
+end;
+
+function TModelEntitiesCardDataDouble.AsInteger: Integer;
+begin
+  result := Trunc(FValue);
 end;
 
 function TModelEntitiesCardDataDouble.BarColorBackground(

@@ -12,22 +12,34 @@ type
   TModelEntitiesCardData = class(TInterfacedObject, IWebCardModelEntitiesCardData)
   strict private
     FToolTip: string;
+    FValueIsInteger: Boolean;
     FCardLabel: IWebCardModelEntitiesCardDataStr;
     FCardIcon: IWebCardModelEntitiesCardDataIcon;
     FCardValue: IWebCardModelEntitiesCardDataDouble;
+    FCardValue2: IWebCardModelEntitiesCardDataDouble;
   public
     constructor Create;
     class function New: IWebCardModelEntitiesCardData;
 
+    function ValueIsInteger: Boolean;
     function ToolTip: string; overload;
     function Text: IWebCardModelEntitiesCardDataStr; overload;
     function Icon: IWebCardModelEntitiesCardDataIcon; overload;
     function Value: IWebCardModelEntitiesCardDataDouble; overload;
+    function Value2: IWebCardModelEntitiesCardDataDouble; overload;
 
     function ToolTip(AValue: string): IWebCardModelEntitiesCardData; overload;
     function Text(AText: string; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
     function Value(AValue: Double; AColorFont: EnumWebCardColors = wccDark;
+      AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
+    function Value(AValue: Integer; AColorFont: EnumWebCardColors = wccDark;
+      AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
+    function Value2(AValue: Double; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
       ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
       AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
@@ -72,6 +84,50 @@ begin
   FToolTip := AValue;
 end;
 
+function TModelEntitiesCardData.Value(AValue: Integer; AColorFont,
+  AColorBackground: EnumWebCardColors; ABarVisible: Boolean; ABarColorFont,
+  ABarColorBackground: EnumWebCardColors;
+  AIsPercent: Boolean): IWebCardModelEntitiesCardData;
+begin
+  result := Self;
+
+  FValueIsInteger := True;
+  FCardValue.SetValue(AValue)
+    .ColorFont(AColorFont)
+    .IsPercent(AIsPercent)
+    .BarVisible(ABarVisible)
+    .BarColorFont(ABarColorFont)
+    .ColorBackground(AColorBackground)
+    .BarColorBackground(ABarColorBackground);
+end;
+
+function TModelEntitiesCardData.Value2: IWebCardModelEntitiesCardDataDouble;
+begin
+  result := FCardValue2;
+end;
+
+function TModelEntitiesCardData.Value2(AValue: Double; AColorFont,
+  AColorBackground: EnumWebCardColors; ABarVisible: Boolean; ABarColorFont,
+  ABarColorBackground: EnumWebCardColors;
+  AIsPercent: Boolean): IWebCardModelEntitiesCardData;
+begin
+  result := Self;
+
+  FValueIsInteger := False;
+  FCardValue2.SetValue(AValue)
+    .ColorFont(AColorFont)
+    .IsPercent(AIsPercent)
+    .BarVisible(ABarVisible)
+    .BarColorFont(ABarColorFont)
+    .ColorBackground(AColorBackground)
+    .BarColorBackground(ABarColorBackground);
+end;
+
+function TModelEntitiesCardData.ValueIsInteger: Boolean;
+begin
+  result := FValueIsInteger;
+end;
+
 function TModelEntitiesCardData.ToolTip: string;
 begin
   result := FToolTip;
@@ -89,6 +145,7 @@ function TModelEntitiesCardData.Value(AValue: Double; AColorFont: EnumWebCardCol
 begin
   result := Self;
 
+  FValueIsInteger := False;
   FCardValue.SetValue(AValue)
     .ColorFont(AColorFont)
     .IsPercent(AIsPercent)
@@ -105,6 +162,7 @@ begin
   FCardLabel := TModelEntitiesCardDataStr.New;
   FCardIcon := TModelEntitiesCardDataIcon.New;
   FCardValue := TModelEntitiesCardDataDouble.New;
+  FCardValue2 := TModelEntitiesCardDataDouble.New;
 end;
 
 function TModelEntitiesCardData.Value: IWebCardModelEntitiesCardDataDouble;

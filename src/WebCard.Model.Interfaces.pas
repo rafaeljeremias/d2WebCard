@@ -32,6 +32,7 @@ type
 
   IWebCardModelEntitiesCardDataDouble = Interface
     ['{16C4E007-6631-4C94-802D-5391E49C1C03}']
+    function AsInteger: Integer;
     function AsFloat: Double; overload;
     function IsPercent: Boolean; overload;
     function BarVisible: Boolean; overload;
@@ -62,15 +63,25 @@ type
 
   IWebCardModelEntitiesCardData = Interface
     ['{9BA026AE-3AC7-497A-BB12-1AD71768A68C}']
+    function ValueIsInteger: Boolean;
     function ToolTip: string; overload;
     function Text: IWebCardModelEntitiesCardDataStr; overload;
-    function Value: IWebCardModelEntitiesCardDataDouble; overload;
     function Icon: IWebCardModelEntitiesCardDataIcon; overload;
+    function Value: IWebCardModelEntitiesCardDataDouble; overload;
+    function Value2: IWebCardModelEntitiesCardDataDouble; overload;
 
     function ToolTip(AValue: string): IWebCardModelEntitiesCardData; overload;
     function Text(AText: string; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone): IWebCardModelEntitiesCardData; overload;
     function Value(AValue: Double; AColorFont: EnumWebCardColors = wccDark;
+      AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
+    function Value(AValue: Integer; AColorFont: EnumWebCardColors = wccDark;
+      AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
+      ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
+      AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
+    function Value2(AValue: Double; AColorFont: EnumWebCardColors = wccDark;
       AColorBackground: EnumWebCardColors = wccNone; ABarVisible: Boolean = False;
       ABarColorFont: EnumWebCardColors = wccDark; ABarColorBackground: EnumWebCardColors = wccNone;
       AIsPercent: Boolean = False): IWebCardModelEntitiesCardData; overload;
@@ -97,7 +108,8 @@ type
   IWebCardModel = Interface
     ['{3384B153-FBC0-4347-A18A-94FC301C06ED}']
     function Card(AValue: IWebCardModelEntitiesCardData;
-      AIconsType: EnumWebCardIconsType = wiGoogleFonts): IWebCardModelCard;
+      AIconsType: EnumWebCardIconsType = wiGoogleFonts;
+      AExibirSegundoValor: Boolean = False): IWebCardModelCard;
     function Entities: IWebCardModelEntities;
   End;
 

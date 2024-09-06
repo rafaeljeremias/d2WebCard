@@ -13,7 +13,8 @@ type
     class function New: IWebCardModel;
 
     function Card(AValue: IWebCardModelEntitiesCardData;
-      AIconsType: EnumWebCardIconsType = wiGoogleFonts): IWebCardModelCard;
+      AIconsType: EnumWebCardIconsType = wiGoogleFonts;
+      AExibirSegundoValor: Boolean = False): IWebCardModelCard;
     function Entities: IWebCardModelEntities;
   End;
 
@@ -22,9 +23,9 @@ implementation
 { TWebCardModel }
 
 function TWebCardModel.Card(AValue: IWebCardModelEntitiesCardData;
-  AIconsType: EnumWebCardIconsType = wiGoogleFonts): IWebCardModelCard;
+  AIconsType: EnumWebCardIconsType; AExibirSegundoValor: Boolean): IWebCardModelCard;
 begin
-  result := TModelCard.New(AValue, AIconsType);
+  result := TModelCard.New(AValue, AIconsType, AExibirSegundoValor);
 end;
 
 function TWebCardModel.Entities: IWebCardModelEntities;
